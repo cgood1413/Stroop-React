@@ -1,15 +1,16 @@
-import {React, Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from 'react';
+
 
 export class Prompt extends Component {
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     render(){
+
         return (
-            <h2>This will be a prompt</h2>
+            <h2 style={{color: this.props.styleColor}}>{this.props.textColor}</h2>
         )
+
     }
 }
