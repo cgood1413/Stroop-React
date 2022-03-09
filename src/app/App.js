@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Prompt } from '../components/prompt';
 import { OptionButton } from '../components/option-button';
+import { generateColors } from '../utils/generateColors';
 
 export class App extends Component {
     constructor(props){
@@ -11,51 +12,37 @@ export class App extends Component {
             textStyleColor: null,
             buttonColors: [],
         };
+        
+    }
+
+    handleButtonClick(){
+        // I want to check if the color of the button clicked matches this.state.textColor
+
+        // If it does match, re-generate the colors and console.log('correct!')
+
+        // If it does not match, simply console.log('incorrect')
     }
 
     render(){
+
         return (
             <div>
                 <Prompt textColor={this.state.textColor} styleColor={this.state.textStyleColor}/>
                 {this.state.buttonColors.map((color, index) => {
-                    return <OptionButton key={"color" + index} style={color}/>
+                    return <OptionButton key={"color" + index} style={color}/>;
                     })}
             </div>
-        )
+        );
+        
     }
 
     componentDidMount(){
 
-        const colors = this.state.colors
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        this.setState({textColor: randomColor});
+        const {textColor, styleColor, buttonColors} = generateColors(this.state.colors);
+        this.setState({textColor: textColor});
+        this.setState({textStyleColor: styleColor});
+        this.setState({buttonColors: buttonColors});
 
-        const colorsCopy = [...colors];
-        colorsCopy.splice(colorsCopy.indexOf(randomColor), 1);
-        const randomStyleColor = colorsCopy[Math.floor(Math.random() * colorsCopy.length)];
-        this.setState({textStyleColor: randomStyleColor});
-
-        const buttonColors = [randomColor, randomStyleColor];
-        while(buttonColors.length < 4){
-            const buttonColor = colorsCopy[Math.floor(Math.random() * colorsCopy.length)];
-            if (!buttonColors.includes(buttonColor)){
-                buttonColors.push(buttonColor);
-            }
-        }
-        this.setState({buttonColors: this.shuffle(buttonColors)});
-
-    }
-
-    // Fisher–Yates shuffle
-    shuffle(arr){
-        let m = arr.length, t, i;
-        while(m){
-            i = Math.floor(Math.random() * m--);
-            t = arr[m];
-            arr[m] = arr[i];
-            arr[i] = t;
-        }
-        return arr;
     }
 
 }

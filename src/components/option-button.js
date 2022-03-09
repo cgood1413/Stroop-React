@@ -5,7 +5,7 @@ export const OptionButton = props => {
 
     return (
         <div>
-            <button style={{backgroundColor: props.style}}>This will be a buttton with a color</button>
+            <button key={props.key} style={{backgroundColor: props.style}}>This will be a buttton with a color</button>
         </div>
     );
     
