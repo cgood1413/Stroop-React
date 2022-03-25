@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Prompt } from '../components/prompt';
 import { OptionButton } from '../components/option-button';
+import { Counter } from '../components/counter';
 import { generateColors } from '../utils/generateColors';
 
 export class App extends Component {
@@ -11,16 +12,25 @@ export class App extends Component {
             textColor: null,
             textStyleColor: null,
             buttonColors: [],
+            score: 0
         };
+        this.handleButtonClick = this.handleButtonClick.bind(this)
         
     }
 
-    handleButtonClick(){
-        // I want to check if the color of the button clicked matches this.state.textColor
+    handleButtonClick({target}){
 
-        // If it does match, re-generate the colors and console.log('correct!')
+        if(target.style.backgroundColor === this.state.textStyleColor){
+            // I'm not loving having to reuse all of this code for my true case. Extract into another function ?
+            this.setState({score: this.state.score += 1})
+            const {textColor, styleColor, buttonColors} = generateColors(this.state.colors);
+            this.setState({textColor: textColor});
+            this.setState({textStyleColor: styleColor});
+            this.setState({buttonColors: buttonColors});
+        } else {
+            console.log('incorrect.');
+        }
 
-        // If it does not match, simply console.log('incorrect')
     }
 
     render(){
@@ -29,8 +39,9 @@ export class App extends Component {
             <div>
                 <Prompt textColor={this.state.textColor} styleColor={this.state.textStyleColor}/>
                 {this.state.buttonColors.map((color, index) => {
-                    return <OptionButton key={"color" + index} style={color}/>;
+                    return <OptionButton key={"color" + index} style={color} handleClick={this.handleButtonClick}/>;
                     })}
+                <Counter score={this.state.score}/>
             </div>
         );
         
