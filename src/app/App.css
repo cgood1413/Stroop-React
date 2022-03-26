@@ -1,0 +1,30 @@
+body {
+    background-color: #2F2C3A;
+}
+
+h3 {
+    color: #F4F4F6;
+}
+
+.color-button {
+    border: none;
+    border-radius: 2.5px;
+}
+
+.card {
+    box-shadow: -10px 10px rgba(0,0,0,0.2);
+    background-color: hsl(253, 14%, 30%);
+    padding: 10px 25px;
+}
+
+#prompt {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: hsl(253, 14%, 10%);
+    border-radius: 4px;
+    -webkit-box-shadow: inset 1px 1px 2.5px hsla(0, 0%, 0%);
+    box-shadow: inset 1px 1px 2.5px hsla(0, 0%, 0%);
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+}

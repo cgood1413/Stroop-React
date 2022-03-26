@@ -1,5 +1,5 @@
 export const Counter = props => {
     return (
-        <h3>Score: {props.score}</h3>
+        <h3>Score: <span>{props.score}</span></h3>
     );
 }
