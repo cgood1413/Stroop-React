@@ -1,5 +1,5 @@
 export const Timer = props => {
     return (
-        <h3>Time: {props.countdown}</h3>
+        <h3 id="timer">Time: {props.countdown}</h3>
     );
 }

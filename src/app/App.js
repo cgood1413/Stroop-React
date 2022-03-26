@@ -40,12 +40,12 @@ export class App extends Component {
 
         return (this.state.testTime >= 0 ? 
             <div className='card'>
-                <Prompt textColor={this.state.textColor} styleColor={this.state.textStyleColor}/>
-                {this.state.buttonColors.map((color, index) => {
-                    return <OptionButton key={"color" + index} style={color} handleClick={this.handleButtonClick}/>;
-                    })}
                 <Counter score={this.state.score}/>
                 <Timer countdown={this.state.testTime}/>
+                <Prompt textColor={this.state.textColor} styleColor={this.state.textStyleColor}/>
+                {this.state.buttonColors.map((color, index) => {
+                    return <OptionButton key={"color" + index} id={"color" + index} style={color} handleClick={this.handleButtonClick}/>;
+                    })}
             </div>
         : 
             <div className='card'>

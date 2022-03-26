@@ -1,30 +1,83 @@
 body {
     background-color: #2F2C3A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 h3 {
     color: #F4F4F6;
 }
 
-.color-button {
-    border: none;
-    border-radius: 2.5px;
-}
-
 .card {
+    max-height: 80vh;
+    max-width: 60vw;
+    display: grid;
+    grid-template: repeat(12, minmax(0, 1fr)) / repeat(12, minmax(0, 1fr));
+    gap: 10px;
+    height: auto;
     box-shadow: -10px 10px rgba(0,0,0,0.2);
     background-color: hsl(253, 14%, 30%);
-    padding: 10px 25px;
+    padding: 10px 10px;
+}
+
+.color-button {
+    border: none;
+    /* outline: none; */
+    border-radius: 2.5px;
+    /* min-width: 80px; */
+    box-shadow: -4px 4px rgba(0,0,0,0.5);
+    width: 100px;
+    height: auto;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.color-button:active {
+    box-shadow: -2px 2px rgba(0,0,0,1);
 }
 
 #prompt {
+    grid-area: 3 / 4 / 6 / 10;
     min-height: 20px;
     padding: 19px;
     margin-bottom: 20px;
-    background-color: hsl(253, 14%, 10%);
+    /* background-color: #2F2C3A; */
+    background-color: hsl(253, 14%, 15%);
     border-radius: 4px;
     -webkit-box-shadow: inset 1px 1px 2.5px hsla(0, 0%, 0%);
     box-shadow: inset 1px 1px 2.5px hsla(0, 0%, 0%);
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
+    text-align: center;
+    font-size: 3em;
+}
+
+#timer {
+    font-family: 'Josefin Sans', sans-serif;
+    grid-area: 2 / 2 / 3 / 4;
+}
+
+#counter {
+    font-family: 'Josefin Sans', sans-serif;
+    grid-area: 2 / 10 / 3 / 12;
+}
+
+#color0 {
+    grid-area: 7/ 5 / 9 / 7;
+    
+}
+
+#color1 {
+    grid-area: 7 / 7 / 9 / 9;
+}
+
+#color2 {
+    grid-area: 9 / 5 / 11 / 7;
+}
+
+#color3 {
+    grid-area: 9 / 7 / 11 / 9;
 }
